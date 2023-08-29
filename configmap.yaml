@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: milvus-gather-config
+data:
+  # file-like keys
+  # namespace: milvus namespace
+  # release: milvus releasename
+  # duration: how long, unit is second
+  # interval: scrap metric interval,unit is second
+  config.json: |
+    {
+        "namespace":"default",
+        "release":"my-release",
+        "duration": 600,
+        "interval": 30
+    }
+

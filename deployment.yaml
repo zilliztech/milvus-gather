@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: milvus-gather
+  labels:
+    app: milvus-gather
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: milvus-gather
+  template:
+    metadata:
+      labels:
+        app: milvus-gather 
+    spec:
+      containers:
+      - name: milvus-gather 
+        image: kevin1991/milvus-gather:latest
+        volumeMounts:
+        - mountPath: /milvus/config
+          name: milvus-gather-config
+      volumes:
+      - configMap:
+          name: milvus-gather-config
+        name: milvus-gather-config
